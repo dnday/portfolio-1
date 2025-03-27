@@ -37,7 +37,7 @@ const nav = () => {
         </div>
     </div>
 
-    <div>
+    <div className="sm:block lg:hidden">
         {toogle ? (
            <div className="flex justify-between ml-10">
            <ul>

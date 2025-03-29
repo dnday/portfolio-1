@@ -24,7 +24,6 @@ const nav = () => {
                 <a href="#" className="text-white hover:bg-indigo-900 rounded-full px-5 py-2 text-xl">Skills</a>
                 <a href="#" className="text-white hover:bg-indigo-900 rounded-full px-5 py-2 text-xl">Projects</a>
                 <a href="#" className="text-white hover:bg-indigo-900 rounded-full px-5 py-2 text-xl">About</a>
-                <a href="#" className="text-white hover:bg-indigo-900 rounded-full px-5 py-2 text-xl">Testimonials</a>
             </div>
             <div className="sm:block lg:hidden">
                 {toogle ? (
@@ -44,7 +43,6 @@ const nav = () => {
                <li className="text-white text-xl mb-2 cursor-pointer">Skills</li>
                <li className="text-white text-xl mb-2 cursor-pointer">Projects</li>
                <li className="text-white text-xl mb-2 cursor-pointer">About</li>
-               <li className="text-white text-xl mb-2 cursor-pointer">Testimonials</li>
            </ul>
        </div> 
         ) : (

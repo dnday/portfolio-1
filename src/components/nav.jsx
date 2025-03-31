@@ -27,9 +27,9 @@ const Nav = () => {
         {/* Desktop menu */}
         <div className="flex gap-x-4">
           <div className="sm:hidden lg:block space-x-2">
-            <Link to="/skills" className="text-white hover:bg-indigo-900 rounded-full px-5 py-2 text-xl">Skills</Link>
-            <Link to="/projects" className="text-white hover:bg-indigo-900 rounded-full px-5 py-2 text-xl">Projects</Link>
-            <Link to="/footer" className="text-white hover:bg-indigo-900 rounded-full px-5 py-2 text-xl">About</Link>
+            <Link to="/skills" className="text-white hover:bg-yellowg hover:text-black rounded-full px-5 py-2 text-xl">Skills</Link>
+            <Link to="/projects" className="text-white hover:bg-yellowg hover:text-black rounded-full px-5 py-2 text-xl">Projects</Link>
+            <Link to="/about" className="text-white hover:bg-yellowg hover:text-black rounded-full px-5 py-2 text-xl">About</Link>
           </div>
 
           {/* Mobile menu */}
@@ -54,7 +54,7 @@ const Nav = () => {
               <Link to="/projects" className="text-white text-xl mb-2 cursor-pointer">Projects</Link>
             </li>
             <li>
-              <Link to="/footer" className="text-white text-xl mb-2 cursor-pointer">About</Link>
+              <Link to="/about" className="text-white text-xl mb-2 cursor-pointer">About</Link>
             </li>
           </ul>
         </div>

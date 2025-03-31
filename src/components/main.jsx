@@ -3,17 +3,18 @@ import Nav from "./nav";
 import Hero from "./hero";
 import Skill from "./skill";
 import Project from "./project";
+import About from "./about";
 import Footer from "./footer";
 
 const Main = () => {
   return (
-    <div className="bg-indigo-700">
+    <div className="font-inter bg-purpled">
       <Nav />
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route path="/skills" element={<Skill />} />
         <Route path="/projects" element={<Project />} />
-        <Route path="/footer" element={<Footer />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </div>
   );

@@ -1,31 +1,27 @@
-import { BsInstagram, BsTwitterX, BsLinkedin } from "react-icons/bs"
 import HeroPic from "../assets/self2.jpg"
+import Resume from "../assets/CV_Marcelinus Dinoglide Yoga Prakoso.pdf"
 import { useState, useEffect } from 'react';
 const hero = () => {
 return (
-        <section className="h-screen flex justify-around items-center p-10 space-x-10 lg:flex-row sm:flex-col space-y-10 text-white">
-                <div className="lg:w-1/3 sm:w-fit">
-                                <p className="text-4xl font-weight-300 mb-4">I'm</p>
-                                <TypedText />
-                        </div>
-                        <div className="lg:w-1/3 sm:w-fit flex justify-center items-center">
-                                <img src={HeroPic} alt="The Picture of Developer" width={150} height={150} className="flex  w-full border-3 border-white rounded-full justify-center drop-shadow-lg"/>
-                        </div>
-                        <div className="lg:w-1/3 sm:w-fit">
-                                <p className="text-4xl font-bold mb-4">About Me</p>
-                                <p className="font-inter text-lg mb-4">
-                                        Hi, I'm Marcelinus Dinoglide. I'm a web developer based in Indonesia. I have a passion for web development and love to create new things. I'm currently looking for a job as a web developer. If you have any job offers, please contact me.
-                                </p>
-                                <button href="#" className="bg-white text-indigo-700 px-10 py-2 rounded-full mt-3 hover:bg-indigo-900 hover:text-white">
-                                                        Show More...
-                                </button>
-                        <div className="flex mt-5 space-x-5 cursor-pointer"> 
-                                                <BsInstagram size={42} className="rounded-full border-2 border-indigo-700 hover:border-white hover:bg-indigo-900 transition duration-300"/>
-                                                <BsTwitterX size={42} className="rounded-full border-2 border-indigo-700 hover:border-white hover:bg-indigo-900 transition duration-300"/>
-                                                <BsLinkedin size={42} className="rounded-full border-2 border-indigo-700 hover:border-white hover:bg-indigo-900 transition duration-300"/>
-                        </div>
+        <section id="home" className="h-screen flex justify-around items-center p-10 lg:p-20 lg:space-x-10 lg:flex-row flex-col space-y-10 text-white ">
+                <div className="lg:w-1/3 w-full">
+                        <p className="text-4xl font-weight-300 mb-4">I'm</p>
+                        <TypedText />
+                </div>
+                <div className="lg:w-[250px] w-full flex justify-center items-center">
+                        <img src={HeroPic} alt="The Picture of Developer" width={150} height={150} className="w-full max-w-[250px] border-3 border-white rounded-full drop-shadow-lg"/>
+                </div>
+                <div className="lg:w-1/3 w-full">
+                        <p className="text-4xl font-bold mb-4">About Me</p>
+                        <p className="font-inter text-lg mb-4">
+                                I'm a web developer based in Indonesia. I have a passion for web development and love to create new things.
+                        </p>  
+                        <a href={Resume} target="_blank" rel="noopener noreferrer" className="bg-white text-indigo-500 font-bold rounded-full px-6 py-2 hover:bg-indigo-500 hover:text-white transition duration-300 ease-in-out">
+                                Download Resume
+                        </a>
                 </div>
         </section>
+       
 )
 
 // Typing animation component
@@ -69,3 +65,4 @@ function TypedText() {
 }
 
 export default hero
+

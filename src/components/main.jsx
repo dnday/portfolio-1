@@ -8,14 +8,15 @@ import Footer from "./footer";
 
 const Main = () => {
   return (
-    <div className="font-inter bg-purpled">
+    <div className="font-inter gradient-background">
       <Nav />
       <Routes>
-        <Route path="/" element={<Hero />} />
+        <Route path="/home" element={<Hero />} />
         <Route path="/skills" element={<Skill />} />
         <Route path="/projects" element={<Project />} />
         <Route path="/about" element={<About />} />
       </Routes>
+      <Footer />
     </div>
   );
 };

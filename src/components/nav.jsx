@@ -18,15 +18,15 @@ const Nav = () => {
     <>
       <div className="flex justify-between items-center p-4 lg:flex-row">
         <div>
-          <a href="#" className="text-white font-mono text-3xl tracking-wider flex items-center">
+          <Link to="/home" className="text-white font-mono text-3xl tracking-wider flex items-center">
             <FaDev className="mr-2" />
             Marcel
-          </a>
+          </Link>
         </div>
 
         {/* Desktop menu */}
         <div className="flex gap-x-4">
-          <div className="sm:hidden lg:block space-x-2">
+          <div className="hidden lg:block space-x-2">
             <Link to="/skills" className="text-white hover:bg-yellowg hover:text-black rounded-full px-5 py-2 text-xl">Skills</Link>
             <Link to="/projects" className="text-white hover:bg-yellowg hover:text-black rounded-full px-5 py-2 text-xl">Projects</Link>
             <Link to="/about" className="text-white hover:bg-yellowg hover:text-black rounded-full px-5 py-2 text-xl">About</Link>
@@ -45,7 +45,7 @@ const Nav = () => {
 
       {/* Mobile dropdown menu */}
       {toggle && (
-        <div className="sm:block lg:hidden mt-4 px-4">
+        <div className="lg:hidden mt-4 px-4">
           <ul>
             <li>
               <Link to="/skills" className="text-white text-xl mb-2 cursor-pointer">Skills</Link>

@@ -18,7 +18,7 @@ const Nav = () => {
     <>
       <div className="flex justify-between items-center p-4 lg:flex-row">
         <div>
-          <Link to="/home" className="text-white font-mono text-3xl tracking-wider flex items-center">
+          <Link to="/" className="text-white font-mono text-3xl tracking-wider flex items-center">
             <FaDev className="mr-2" />
             Marcel
           </Link>

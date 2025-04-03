@@ -28,7 +28,7 @@ export default function Footer() {
         <div className="copyright py-4 flex justify-center items-center text-center">
           <div className="container">
             <small>
-              Copyright &copy; {new Date().getFullYear()} {websiteName}
+              Copyright &copy; {new Date().getFullYear()} {websiteName}. Inspired by <a href="https://seanhalpin.xyz/" target="_blank" rel="noopener noreferrer">Se&aacute;n Halpin</a>.
             </small>
           </div>
         </div>

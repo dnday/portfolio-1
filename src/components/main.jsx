@@ -1,21 +1,48 @@
-import { Route, Routes } from 'react-router-dom';  // Import Routes dan Route
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Nav from "./nav";
 import Hero from "./hero";
 import Skill from "./skill";
 import Project from "./project";
 import About from "./about";
 import Footer from "./footer";
+import ScrollToTop from './scrollToTop';
+import PageTransition from './pageTransition'; // Add this import
+
 
 const Main = () => {
+  const location = useLocation();
+
   return (
     <div className="font-inter gradient-background">
       <Nav />
-      <Routes>
-        <Route path="/home" element={<Hero />} />
-        <Route path="/skills" element={<Skill />} />
-        <Route path="/projects" element={<Project />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
+      <ScrollToTop />
+      
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={
+            <PageTransition type="fade">
+              <Hero />
+            </PageTransition>
+          } />
+          <Route path="/skills" element={
+            <PageTransition type="reveal">
+              <Skill />
+            </PageTransition>
+          } />
+          <Route path="/projects" element={
+            <PageTransition type="slide">
+              <Project />
+            </PageTransition>
+          } />
+          <Route path="/about" element={
+            <PageTransition type="flip">
+              <About />
+            </PageTransition>
+          } />
+        </Routes>
+      </AnimatePresence>
+      
       <Footer />
     </div>
   );

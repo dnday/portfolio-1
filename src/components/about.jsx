@@ -8,71 +8,67 @@ import "react-vertical-timeline-component/style.min.css";
 import Badge from "react-bootstrap/Badge";
 
 const About = () => {
-  const [inView, setInView] = useState(false);
+  const [inView, setInView] = useState(new Set());
 
   const resumeExperience = [
     {
-      title: "Software Developer Intern",
-      company: "XYZ Company",
-      years: "2023",
-      mainTech: ["JavaScript", "React"],
-      technologies: ["Node.js", "MongoDB", "Express"],
+      organization: "KOMATIK UGM",
+      position: "Member of IoT Gama",
+      tasks: ["Learn about IoT (sensors, microcontroller, programming language, LoRa) and its application to solve real-world problems"],
+      startDate: "February 2025",
+      endDate: "Present",
     },
     {
-      title: "Frontend Developer Intern",
-      company: "ABC Company",
-      years: "2022",
-      mainTech: ["HTML", "CSS", "React"],
-      technologies: ["Webpack", "Sass"],
+      organization: "KMTETI",
+      position: "Workshop Staff",
+      tasks: ["Organize training sessions and boot camps related to technical skills in support of classroom and off-site lectures"],
+      startDate: "January 2025",
+      endDate: "Present",
+    },
+    {
+      organization: "FindIT! UGM",
+      position: "Logistic Division Staff",
+      tasks: ["Managing needs of the event including property, korsa/workshirt, and consumption"],
+      startDate: "October 2024",
+      endDate: "Present",
+    },
+    {
+      organization: "Technocorner UGM",
+      position: "Robotic Technical Staff",
+      tasks: ["Managing robotic competition in Technocorner especially in Line Follower"],
+      startDate: "October 2024",
+      endDate: "Present",
+    },
+    {
+      organization: "Misa Kampus UGM",
+      position: "Staff of Human Resources and Development",
+      tasks: ["Engaged in staff recruitment and development programs"],
+      startDate: "September 2024",
+      endDate: "Present",
     },
   ];
 
-  const resumeBasicInfo = {
-    section_name: { experience: "Experience" },
-  };
-
-  const sectionName = resumeBasicInfo.section_name.experience;
-
   const work = resumeExperience.map((work, i) => {
-    const technologies = work.technologies;
-    const mainTechnologies = work.mainTech;
-
-    const mainTech = mainTechnologies.map((technology, i) => {
-      return (
-        <Badge pill className="main-badge mr-2 mb-2" key={i}>
-          {technology}
-        </Badge>
-      );
-    });
-
-    const tech = technologies.map((technology, i) => {
-      return (
-        <Badge pill className="experience-badge mr-2 mb-2" key={i}>
-          {technology}
-        </Badge>
-      );
-    });
+    const tasks = work.tasks.map((task, index) => (
+      <li key={index} className="list-disc ml-5">
+        {task}
+      </li>
+    ));
 
     return (
       <VerticalTimelineElement
-        className={`vertical-timeline-element--work ${inView ? "animate" : ""}`}
-        date={work.years}
-        iconStyle={{
-          background: "#AE944F",
-          color: "#fff",
-          textAlign: "center",
-        }}
-        icon={<i className="fab fa-angular experience-icon"></i>}
+        className={`vertical-timeline-element--work ${inView.has(i) ? "animate" : ""}`}
+        date={`${work.startDate} - ${work.endDate}`}
         key={i}
+        icon={<span className="iconify" data-icon="mdi:dot" data-inline="false"></span>}
       >
-        <div style={{ textAlign: "left", marginBottom: "4px" }}>{mainTech}</div>
         <h3 className="vertical-timeline-element-title" style={{ textAlign: "left" }}>
-          {work.title}
+          {work.organization}
         </h3>
         <h4 className="vertical-timeline-element-subtitle" style={{ textAlign: "left" }}>
-          {work.company}
+          {work.position}
         </h4>
-        <div style={{ textAlign: "left", marginTop: "15px" }}>{tech}</div>
+        <ul className="mt-3">{tasks}</ul>
       </VerticalTimelineElement>
     );
   });
@@ -82,7 +78,7 @@ const About = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setInView(true);
+            setInView((prevInView) => new Set(prevInView).add(parseInt(entry.target.getAttribute('data-index'), 10)));
             observer.unobserve(entry.target); // Stop observing once it's in view
           }
         });
@@ -90,8 +86,11 @@ const About = () => {
       { threshold: 0.5 } // Trigger when 50% of the element is in view
     );
 
-    const timelineElements = document.querySelectorAll('.vertical-timeline-element');
-    timelineElements.forEach((element) => observer.observe(element));
+    const timelineElements = document.querySelectorAll('.vertical-timeline-element--work');
+    timelineElements.forEach((element, index) => {
+      element.setAttribute('data-index', index);
+      observer.observe(element);
+    });
 
     return () => {
       observer.disconnect(); // Cleanup observer on unmount
@@ -121,25 +120,21 @@ const About = () => {
             </div>
           </div>
 
-        
-         {/* Text container */}
-         <div className="w-full">
+          {/* Text container */}
+          <div className="w-full">
             <div className="text-left border-0 rounded-xl background-radient sm:text-left">
-                        <p className="text-2xl text-yellowg font-serif">
-                            <span className="text-2xl mb-7 sm:text-5xl text-greeny">
-                                I'm a first-year Information Engineering student at Universitas
-                                Gadjah Mada.
-                            </span>
-                            <br />
-                            I have a passion for web development, cloud computing,
-                            IoT, and data science.
-                        </p> 
-                </div>
+              <p className="text-2xl text-yellowg font-serif">
+                <span className="text-2xl mb-7 sm:text-5xl text-greeny">
+                  I'm a first-year Information Engineering student at Universitas
+                  Gadjah Mada.
+                </span>
+                <br />
+                I have a passion for web development, cloud computing,
+                IoT, and data science.
+              </p>
             </div>
+          </div>
         </div>
-        
-
-        
       </div>
 
       {/* Experience Section */}
@@ -151,14 +146,6 @@ const About = () => {
       <div className="col-md-8 mx-auto mt-5">
         <VerticalTimeline>
           {work}
-          <VerticalTimelineElement
-            iconStyle={{
-              background: "#AE944F",
-              color: "#fff",
-              textAlign: "center",
-            }}
-            icon={<i className="fas fa-hourglass-start mx-auto experience-icon"></i>}
-          />
         </VerticalTimeline>
       </div>
     </>
@@ -166,3 +153,4 @@ const About = () => {
 };
 
 export default About;
+

@@ -1,6 +1,6 @@
 import Proj1IMG from '../assets/Project1.png';
-import Proj2IMG from '../assets/Project2.png';  // Assuming you have a second image
-import Proj3IMG from '../assets/Project3.png';  // Assuming you have a third image
+import Proj2IMG from '../assets/Project2.png'; 
+import Proj3IMG from '../assets/Project3.png'; 
 
 export default function Project() {
   return (
@@ -12,7 +12,7 @@ export default function Project() {
         <div>
           <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 p-5">
             {/* Project 1 */}
-            <div className="max-w-md mx-auto bg-yellowg rounded-xl shadow-4xl overflow-hidden md:max-w-2xl">
+            <div className="max-w-md mx-auto bg-yellowg bg-opacity-100 rounded-xl shadow-4xl overflow-hidden md:max-w-2xl">
               <div className="flex flex-col xl:flex-row gap-5">
                 <div className="p-8">
                   <div className="uppercase tracking-wide text-sm text-purpled font-semibold">
@@ -35,7 +35,7 @@ export default function Project() {
             
 
             {/* Project 2 */}
-            <div className="max-w-md mx-auto bg-yellowg rounded-xl shadow-md overflow-hidden md:max-w-2xl ">
+            <div className="max-w-md mx-auto bg-yellowg bg-opacity-100 rounded-xl shadow-md overflow-hidden md:max-w-2xl ">
               <div className="flex flex-col xl:flex-row gap-5">
                 <div className="p-8">
                   <div className="uppercase tracking-wide text-sm text-blu font-semibold">
@@ -60,7 +60,7 @@ export default function Project() {
           {/* Optional: If you want to add more projects, you can uncomment the following section */}
           {/* <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 p-5"> */}
             {/* Project 3 */}
-            {/* <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl hover:animate-pulse animate-slideInFromBottom">
+            {/* <div className="max-w-md mx-auto bg-white bg-opacity-100 rounded-xl shadow-md overflow-hidden md:max-w-2xl hover:animate-pulse animate-slideInFromBottom">
               <div className="flex flex-col xl:flex-row gap-5">
                 <div className="p-8">
                   <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">

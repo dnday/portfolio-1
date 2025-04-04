@@ -9,9 +9,8 @@ const Nav = () => {
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const navHeight = scrolled ? 64 : 80; // Explicit height values in pixels
+  const navHeight = scrolled ? 64 : 80;
 
-  // Handle scroll effect for navbar
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -19,7 +18,6 @@ const Nav = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Set initial CSS variable for navbar height
     document.documentElement.style.setProperty(
       "--navbar-height",
       `${navHeight}px`
@@ -28,7 +26,6 @@ const Nav = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [scrolled, navHeight]);
 
-  // Update CSS variable when height changes
   useEffect(() => {
     document.documentElement.style.setProperty(
       "--navbar-height",
@@ -36,26 +33,23 @@ const Nav = () => {
     );
   }, [navHeight]);
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setToggle(false);
   }, [location]);
 
   return (
     <>
-      {/* Spacer div to prevent content overlap */}
       <div style={{ height: `${navHeight}px` }} className="w-full" />
 
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "h-16 bg-black/70 backdrop-blur-sm shadow-md border-b border-gray-800"
-            : "h-20  backdrop-blur-sm"
+            ? "h-16 bg-black/70 backdrop-blur-md shadow-md border-b border-gray-800"
+            : "h-20 bg-black/70 backdrop-blur-md"
         }`}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
           <div className="flex justify-between items-center h-full">
-            {/* Logo */}
             <Link
               to="/"
               className="font-mono text-2xl md:text-3xl tracking-wider flex items-center group"
@@ -63,17 +57,22 @@ const Nav = () => {
               <motion.div
                 whileHover={{ rotate: 5 }}
                 transition={{ duration: 0.2 }}
-                className="mr-2 text-amber-400 group-hover:text-amber-300 transition-colors"
+                className="mr-2 transition-colors"
               >
-                <FaDev />
+                <img
+                  src="/logo.svg"
+                  alt="Marcel Logo"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8 object-contain"
+                />
               </motion.div>
               <span className="bg-gradient-to-r from-white to-amber-300 bg-clip-text text-transparent">
                 Marcel
               </span>
             </Link>
 
-            {/* Desktop menu */}
-            <div className="hidden lg:flex items-center space-x-1 p-1 bg-black/10 rounded-full backdrop-blur-sm">
+            <div className="hidden lg:flex items-center space-x-1 p-1 bg-black/10 rounded-full backdrop-blur-md">
               {["skills", "projects", "about", "contact"].map((item) => (
                 <NavLink
                   key={item}
@@ -85,7 +84,6 @@ const Nav = () => {
               ))}
             </div>
 
-            {/* Mobile menu button */}
             <motion.div className="lg:hidden z-20" whileTap={{ scale: 0.9 }}>
               {toggle ? (
                 <AiOutlineClose
@@ -104,7 +102,6 @@ const Nav = () => {
           </div>
         </div>
 
-        {/* Mobile dropdown menu */}
         <AnimatePresence>
           {toggle && (
             <motion.div
@@ -112,18 +109,21 @@ const Nav = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden absolute top-full left-0 right-0 glass-dark shadow-lg overflow-hidden border-b border-white/10"
+              className="lg:hidden absolute top-full left-0 right-0 bg-black/70 backdrop-blur-md shadow-lg overflow-hidden border-b border-white/10"
             >
               <div className="container mx-auto px-4 py-4">
                 <ul className="flex flex-col space-y-2">
-                  {["skills", "projects", "about"].map((item) => (
+                  {["skills", "projects", "about", "contact"].map((item) => (
                     <motion.li
                       key={item}
                       initial={{ x: -20, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{
                         delay:
-                          0.1 * ["skills", "projects", "about"].indexOf(item),
+                          0.1 *
+                          ["skills", "projects", "about", "contact"].indexOf(
+                            item
+                          ),
                       }}
                     >
                       <Link
@@ -148,7 +148,6 @@ const Nav = () => {
   );
 };
 
-// Reusable NavLink component for desktop menu
 const NavLink = ({ to, children, isActive }) => {
   return (
     <Link
@@ -157,7 +156,6 @@ const NavLink = ({ to, children, isActive }) => {
         isActive ? "text-yellowg" : "text-gray-300 hover:text-yellowg"
       }`}
     >
-      {/* Background effect */}
       <span
         className={`absolute inset-0 rounded-full transition-all duration-300 ${
           isActive
@@ -165,11 +163,7 @@ const NavLink = ({ to, children, isActive }) => {
             : "bg-purpled/30 opacity-0 group-hover:opacity-50"
         }`}
       />
-
-      {/* Text */}
       <span className="relative z-10">{children}</span>
-
-      {/* Active indicator */}
       {isActive && (
         <motion.span
           layoutId="activeNavIndicator"

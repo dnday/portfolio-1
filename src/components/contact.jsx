@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { FiSend, FiMail, FiUser, FiMessageSquare } from "react-icons/fi";
 
-const API_URL = "http://localhost:8081";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8081";
 
 const Contact = () => {
   // Form state management
@@ -44,7 +44,7 @@ const Contact = () => {
     });
 
     try {
-      const response = await fetch(`${API_URL}/api/v1/contact`, {
+      const response = await fetch(`${API_URL}/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
